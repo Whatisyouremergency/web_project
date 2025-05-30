@@ -1,22 +1,25 @@
-"use client"
-
-import Image from "next/image"
-import { useRouter } from "next/navigation"
+import { useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
+import logo from "@/assets/ufc-logo.png" // 경로는 프로젝트 구조에 맞게 조정
 
 export default function Navbar() {
-  const router = useRouter()
+  const navigate = useNavigate()
 
-  const handleNavigation = (path: string) => {
-    router.push(path)
+  const handleNavigation = (path) => {
+    navigate(path)
   }
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-black bg-opacity-90 border-b border-gray-800">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <Link href="/" className="flex items-center">
+          <Link to="/" className="flex items-center">
             <div className="relative w-12 h-12">
-              <Image src="/ufc-logo.png" alt="UFC Logo" fill className="object-contain filter brightness-0 invert" />
+              <img
+                src={logo}
+                alt="UFC Logo"
+                className="object-contain w-full h-full filter brightness-0 invert"
+              />
             </div>
           </Link>
 
